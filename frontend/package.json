@@ -5,7 +5,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:ui": "vitest --ui"
   },
   "dependencies": {
     "@emotion/react": "^11.11.0",
@@ -16,10 +19,16 @@
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.1.4",
+    "@testing-library/react": "^14.1.2",
+    "@testing-library/user-event": "^14.5.1",
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
     "@vitejs/plugin-react": "^4.1.0",
+    "@vitest/ui": "^1.0.4",
+    "jsdom": "^23.0.1",
     "typescript": "^5.4.2",
-    "vite": "^5.1.7"
+    "vite": "^5.1.7",
+    "vitest": "^1.0.4"
   }
 }
