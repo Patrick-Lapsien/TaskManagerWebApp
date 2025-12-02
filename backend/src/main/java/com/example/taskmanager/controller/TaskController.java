@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -50,6 +51,17 @@ public class TaskController {
             Task saved = repository.save(existing);
             return ResponseEntity.ok(saved);
         }).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @PostMapping
+    public ResponseEntity<Task> create(@Valid @RequestBody Task incoming) {
+        Task toSave = new Task();
+        toSave.setTitle(incoming.getTitle());
+        toSave.setDescription(incoming.getDescription());
+        toSave.setStatus(incoming.getStatus());
+        toSave.setDueDate(incoming.getDueDate());
+        Task saved = repository.save(toSave);
+        return ResponseEntity.status(201).body(saved);
     }
 
     @DeleteMapping("/{id}")
